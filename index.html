@@ -17,7 +17,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--purple); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
- 
+
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 1.2rem 4rem;
@@ -30,7 +30,7 @@
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.3s; }
   .nav-links a:hover { color: var(--teal); }
- 
+
   .hero { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; }
   .hero-photo { position: absolute; inset: 0; background: url('hansika.jpeg') center center / cover no-repeat; z-index: 0; }
   .hero-overlay {
@@ -51,11 +51,11 @@
   .btn-outline:hover { background: var(--purple); color: var(--white); transform: translateY(-2px); }
   .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2; opacity: 0; animation: fadeUp 0.7s ease 1.2s forwards; }
   .scroll-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: bounce 1.5s ease infinite; }
- 
+
   section { padding: 6rem 4rem; }
   .section-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--teal); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.8rem; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--purple); margin-bottom: 2.5rem; line-height: 1.15; }
- 
+
   .about { background: var(--white); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
   .about-text p { color: var(--muted); line-height: 1.8; font-size: 1rem; margin-bottom: 1.2rem; }
@@ -65,7 +65,7 @@
   .about-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(62,15,77,0.08); }
   .about-card-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 0.3rem; }
   .about-card-label { font-size: 0.75rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
- 
+
   .education { background: var(--bg); }
   .edu-card { background: var(--white); border-radius: 10px; padding: 2rem 2.5rem; border: 1.5px solid rgba(62,15,77,0.08); display: flex; align-items: center; gap: 2rem; max-width: 700px; transition: all 0.3s ease; }
   .edu-card:hover { box-shadow: 0 12px 32px rgba(62,15,77,0.08); transform: translateY(-4px); }
@@ -73,7 +73,7 @@
   .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--purple); margin-bottom: 0.3rem; }
   .edu-college { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem; }
   .edu-cgpa { display: inline-block; padding: 0.3rem 0.8rem; background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.3); border-radius: 20px; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--teal-dark); }
- 
+
   .projects { background: var(--white); }
   .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .project-card { background: var(--bg); border: 1.5px solid rgba(62,15,77,0.08); border-radius: 10px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; text-decoration: none; display: block; color: inherit; }
@@ -85,7 +85,7 @@
   .project-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .project-tag { padding: 0.3rem 0.75rem; background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.25); border-radius: 20px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--teal-dark); }
- 
+
   .skills { background: var(--bg); }
   .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .skill-group { background: var(--white); border-radius: 10px; padding: 1.8rem; border: 1.5px solid rgba(62,15,77,0.07); transition: all 0.3s ease; }
@@ -94,7 +94,7 @@
   .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .skill-pill { padding: 0.4rem 0.9rem; border: 1.5px solid rgba(62,15,77,0.12); border-radius: 20px; font-size: 0.8rem; color: var(--purple); transition: all 0.2s ease; font-weight: 500; }
   .skill-pill:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
- 
+
   .contact { background: var(--purple); }
   .contact .section-eyebrow { color: var(--teal); }
   .contact .section-title { color: var(--white); }
@@ -108,17 +108,17 @@
   .info-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.2rem 1.5rem; }
   .info-box-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--teal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.3rem; }
   .info-box-value { font-size: 0.9rem; color: rgba(255,255,255,0.85); }
- 
+
   footer { background: var(--purple); border-top: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
   footer p { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.4); }
   footer span { color: var(--teal); }
- 
+
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
- 
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
- 
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -133,7 +133,7 @@
 </style>
 </head>
 <body>
- 
+
 <nav>
   <a href="#" class="nav-logo">HV<span>.</span></a>
   <ul class="nav-links">
@@ -144,7 +144,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
- 
+
 <section class="hero" id="home">
   <div class="hero-photo"></div>
   <div class="hero-overlay"></div>
@@ -163,7 +163,7 @@
   </div>
   <div class="hero-scroll"><div class="scroll-dot"></div></div>
 </section>
- 
+
 <section class="about" id="about">
   <div class="about-grid">
     <div class="about-text reveal">
@@ -181,7 +181,7 @@
     </div>
   </div>
 </section>
- 
+
 <section class="education" id="education">
   <p class="section-eyebrow reveal">02 — Education</p>
   <h2 class="section-title reveal">Academic Background.</h2>
@@ -194,7 +194,7 @@
     </div>
   </div>
 </section>
- 
+
 <section class="projects" id="projects">
   <p class="section-eyebrow reveal">03 — Projects</p>
   <h2 class="section-title reveal">Things I've Built.</h2>
@@ -225,7 +225,7 @@
     </div>
   </div>
 </section>
- 
+
 <section class="skills" id="skills">
   <p class="section-eyebrow reveal">04 — Skills</p>
   <h2 class="section-title reveal">Tools of the Trade.</h2>
@@ -244,7 +244,7 @@
     </div>
   </div>
 </section>
- 
+
 <section class="contact" id="contact">
   <div class="contact-grid">
     <div class="contact-text reveal">
@@ -265,12 +265,12 @@
     </div>
   </div>
 </section>
- 
+
 <footer>
   <p>Designed & Built by <span>Hansika Varre</span></p>
   <p>© 2026 — All rights reserved</p>
 </footer>
- 
+
 <script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach((entry, i) => {
