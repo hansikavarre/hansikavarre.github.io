@@ -9,24 +9,51 @@
   --bg:#0A0A0A;
   --blue:#007BA7;
   --pink:#FF2D95;
-  --card:#141414;
-  --line:#262626;
-  --text:#F2F2F2;
-  --muted:#A0A0A0;
   --blue-soft:#3FB6E0;
+  --text:#F2F2F2;
+  --muted:#A8A8A8;
+  --line:rgba(255,255,255,.09);
+  --glass:rgba(20,20,20,.62);
+
+  /* Background gradient colours (blue version) */
+  --g-dark:#0A0A0A;
+  --g-mid:#06222C;
+  --g-light:#0B3A4D;
+  --glow1:rgba(0,123,167,.55);
+  --glow2:rgba(255,45,149,.18);
+
+  /* GREEN OPTION: replace the 5 lines above with these, and also set
+     --blue:#4A6958; --blue-soft:#8FB89F;
+  --g-dark:#0A0A0A;
+  --g-mid:#1B2922;
+  --g-light:#435146;
+  --glow1:rgba(74,105,88,.80);
+  --glow2:rgba(67,81,70,.55);
+  */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 70% 60% at 88% 0%, var(--glow1), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 100% 65%, var(--glow2), transparent 70%),
+    linear-gradient(100deg, var(--g-dark) 0%, var(--g-mid) 55%, var(--g-light) 100%);
+}
 a{color:var(--blue-soft);text-decoration:none}
 a:hover{color:var(--pink)}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
 .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
 section{padding:80px 0}
-h2{font-size:2rem;color:var(--blue);margin-bottom:28px}
+h2{font-size:2rem;color:var(--blue-soft);margin-bottom:28px}
 h2::after{content:"";display:block;width:56px;height:3px;background:var(--pink);margin-top:10px;border-radius:2px}
 
+/* glass surfaces */
+nav,.card,.stat,.exp,.certs li{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
 /* nav */
-nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.92);border-bottom:1px solid var(--line)}
+nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.65);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
 .logo{font-weight:800;color:var(--text);font-size:1.15rem}
 .logo span{color:var(--pink)}
@@ -38,24 +65,24 @@ nav ul a:hover{color:var(--pink)}
 #home{padding:100px 0 80px}
 #home .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
 #home h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.15}
-#home h1 span{color:var(--blue)}
+#home h1 span{color:var(--blue-soft)}
 #home p{color:var(--muted);margin:18px 0 26px}
-.btn{display:inline-block;padding:12px 26px;border-radius:8px;background:var(--blue);color:#fff;border:2px solid var(--blue);transition:.2s;margin-right:10px}
+.btn{display:inline-block;padding:12px 26px;border-radius:8px;background:var(--blue);color:#fff;border:2px solid var(--blue);transition:.2s;margin:0 10px 10px 0}
 .btn:hover{background:var(--pink);border-color:var(--pink);color:#fff}
-.btn.ghost{background:transparent;color:var(--text);border-color:var(--blue)}
-.photo{justify-self:center;width:min(280px,80vw);aspect-ratio:1/1.1;border:3px solid var(--blue);border-radius:20px;box-shadow:12px 12px 0 var(--pink);overflow:hidden;background:var(--card);display:grid;place-items:center}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--blue-soft)}
+.photo{justify-self:center;width:min(280px,80vw);aspect-ratio:1/1.1;border:3px solid var(--blue);border-radius:20px;box-shadow:12px 12px 0 var(--pink);overflow:hidden;background:var(--glass);display:grid;place-items:center}
 .photo img{width:100%;height:100%;object-fit:cover}
 
 /* about */
 .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:36px}
-.about-grid p{color:#cfcfcf}
+.about-grid p{color:#d6d6d6}
 .stats{display:grid;gap:14px}
-.stat{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pink);border-radius:10px;padding:16px 20px}
-.stat b{font-size:1.8rem;color:var(--blue);display:block}
+.stat{background:var(--glass);border:1px solid var(--line);border-left:4px solid var(--pink);border-radius:10px;padding:16px 20px}
+.stat b{font-size:1.8rem;color:var(--blue-soft);display:block}
 .stat span{color:var(--muted);font-size:.92rem}
 
 /* experience card with hover pop */
-.exp{position:relative;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:14px;padding:24px 26px;margin-top:30px;cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s}
+.exp{position:relative;background:var(--glass);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:14px;padding:24px 26px;margin-top:30px;cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s}
 .exp:hover,.exp:focus-within{transform:scale(1.03);border-color:var(--pink);box-shadow:0 14px 40px rgba(255,45,149,.2);z-index:2}
 .exp h3{font-size:1.2rem}
 .exp .meta{color:var(--blue-soft);font-size:.93rem;margin:4px 0 8px}
@@ -63,27 +90,27 @@ nav ul a:hover{color:var(--pink)}
 .exp .more{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s,opacity .4s,margin .3s}
 .exp:hover .more,.exp:focus-within .more{max-height:420px;opacity:1;margin-top:16px}
 .exp .badge{display:inline-block;background:var(--pink);color:#fff;font-size:.82rem;padding:3px 12px;border-radius:999px;margin-bottom:10px}
-.exp ul{padding-left:20px;color:#d6d6d6}
+.exp ul{padding-left:20px;color:#e0e0e0}
 .exp li{margin-bottom:6px}
 
 /* skills */
 .chips{display:flex;flex-wrap:wrap;gap:12px}
-.chip{padding:9px 18px;border:1px solid var(--blue);border-radius:999px;transition:.2s}
+.chip{padding:9px 18px;border:1px solid var(--blue-soft);border-radius:999px;background:rgba(20,20,20,.4);transition:.2s}
 .chip:hover{border-color:var(--pink);color:var(--pink)}
 .group+.group{margin-top:24px}
 .group h3{font-size:1rem;color:var(--muted);margin-bottom:12px;font-weight:600}
 
 /* projects */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:.25s}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:24px;transition:.25s}
 .card:hover{border-color:var(--pink);transform:translateY(-4px);box-shadow:0 10px 30px rgba(255,45,149,.15)}
-.card h3{color:var(--text);margin-bottom:8px}
-.card p{color:#bdbdbd;font-size:.96rem;margin-bottom:12px}
+.card h3{margin-bottom:8px}
+.card p{color:#c4c4c4;font-size:.96rem;margin-bottom:12px}
 .card .tech{color:var(--blue-soft);font-size:.86rem}
 
 /* certifications */
 .certs{list-style:none;display:grid;gap:12px}
-.certs li{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:14px 18px;transition:.2s}
+.certs li{background:var(--glass);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:14px 18px;transition:.2s}
 .certs li:hover{border-left-color:var(--pink)}
 
 /* contact */
@@ -126,7 +153,6 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
       <a class="btn ghost" href="#contact">Contact me</a>
     </div>
     <div class="photo">
-      <!-- Keep your own photo file name here -->
       <img src="photo.jpg" alt="Hansika Varre" onerror="this.style.display='none'">
     </div>
   </div>
@@ -139,7 +165,6 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
     <div class="about-grid">
       <div>
         <p>I’m a B.Tech Computer Science Engineering student at Ramachandra College of Engineering, graduating in 2026. I enjoy frontend development, problem solving and learning new technologies.</p>
-        <!-- Add your own achievements here -->
       </div>
       <div class="stats">
         <div class="stat"><b>9.06</b><span>CGPA</span></div>
@@ -175,7 +200,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
     </div>
     <div class="group">
       <h3>Frameworks and tools</h3>
-      <div class="chips"><span class="chip">Git &amp; GitHub</span><!-- add yours --></div>
+      <div class="chips"><span class="chip">Git &amp; GitHub</span></div>
     </div>
     <div class="group">
       <h3>Domains</h3>
@@ -208,7 +233,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:v
   </div>
 </section>
 
-<!-- CERTIFICATIONS: names only, delete this whole section if you prefer -->
+<!-- CERTIFICATIONS: delete this whole section if you don't want it -->
 <section id="certifications">
   <div class="wrap">
     <h2>Certifications</h2>
