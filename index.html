@@ -2,286 +2,234 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hansika Varre — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hansika Varre | Portfolio</title>
 <style>
-  :root {
-    --bg: #FFFACD;
-    --teal: #2DD4BF;
-    --teal-dark: #1aaf9d;
-    --purple: #3E0F4D;
-    --muted: #6b4d7a;
-    --white: #ffffff;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--purple); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+:root{
+  --bg:#0A0A0A;
+  --blue:#007BA7;
+  --pink:#FF2D95;
+  --card:#141414;
+  --line:#262626;
+  --text:#F2F2F2;
+  --muted:#A0A0A0;
+  --blue-soft:#3FB6E0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7}
+a{color:var(--blue-soft);text-decoration:none}
+a:hover{color:var(--pink)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+h2{font-size:2rem;color:var(--blue);margin-bottom:28px}
+h2::after{content:"";display:block;width:56px;height:3px;background:var(--pink);margin-top:10px;border-radius:2px}
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 1.2rem 4rem;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(255,250,205,0.92); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(62,15,77,0.08);
-  }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: var(--purple); text-decoration: none; }
-  .nav-logo span { color: var(--teal); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.3s; }
-  .nav-links a:hover { color: var(--teal); }
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.92);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;color:var(--text);font-size:1.15rem}
+.logo span{color:var(--pink)}
+nav ul{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
+nav ul a{color:var(--muted);font-size:.95rem}
+nav ul a:hover{color:var(--pink)}
 
-  .hero { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; }
-  .hero-photo { position: absolute; inset: 0; background: url('hansika.jpeg') center center / cover no-repeat; z-index: 0; }
-  .hero-overlay {
-    position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(to right, rgba(255,250,205,0.97) 0%, rgba(255,250,205,0.92) 45%, rgba(255,250,205,0.4) 70%, rgba(255,250,205,0.05) 100%);
-  }
-  .hero-content { position: relative; z-index: 2; padding: 5rem 4rem 0; max-width: 620px; }
-  .hero-hello { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--teal); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
-  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 700; line-height: 1.0; margin-bottom: 1.2rem; opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards; }
-  .hero-name .first { color: var(--purple); display: block; }
-  .hero-name .last { color: var(--teal); display: block; }
-  .hero-tagline { font-size: 1.1rem; color: var(--muted); line-height: 1.65; margin-bottom: 0.8rem; font-weight: 300; opacity: 0; animation: fadeUp 0.7s ease 0.6s forwards; }
-  .hero-college { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--teal-dark); margin-bottom: 2.2rem; opacity: 0; animation: fadeUp 0.7s ease 0.7s forwards; }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease 0.9s forwards; }
-  .btn-teal { padding: 0.85rem 2rem; background: var(--teal); color: var(--white); font-size: 0.88rem; font-weight: 600; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; }
-  .btn-teal:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,212,191,0.3); }
-  .btn-outline { padding: 0.85rem 2rem; border: 2px solid var(--purple); color: var(--purple); font-size: 0.88rem; font-weight: 600; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; }
-  .btn-outline:hover { background: var(--purple); color: var(--white); transform: translateY(-2px); }
-  .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2; opacity: 0; animation: fadeUp 0.7s ease 1.2s forwards; }
-  .scroll-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: bounce 1.5s ease infinite; }
+/* home */
+#home{padding:100px 0 80px}
+#home .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+#home h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.15}
+#home h1 span{color:var(--blue)}
+#home p{color:var(--muted);margin:18px 0 26px}
+.btn{display:inline-block;padding:12px 26px;border-radius:8px;background:var(--blue);color:#fff;border:2px solid var(--blue);transition:.2s;margin-right:10px}
+.btn:hover{background:var(--pink);border-color:var(--pink);color:#fff}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--blue)}
+.photo{justify-self:center;width:min(280px,80vw);aspect-ratio:1/1.1;border:3px solid var(--blue);border-radius:20px;box-shadow:12px 12px 0 var(--pink);overflow:hidden;background:var(--card);display:grid;place-items:center}
+.photo img{width:100%;height:100%;object-fit:cover}
 
-  section { padding: 6rem 4rem; }
-  .section-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--teal); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 0.8rem; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--purple); margin-bottom: 2.5rem; line-height: 1.15; }
+/* about */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:36px}
+.about-grid p{color:#cfcfcf}
+.stats{display:grid;gap:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pink);border-radius:10px;padding:16px 20px}
+.stat b{font-size:1.8rem;color:var(--blue);display:block}
+.stat span{color:var(--muted);font-size:.92rem}
 
-  .about { background: var(--white); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .about-text p { color: var(--muted); line-height: 1.8; font-size: 1rem; margin-bottom: 1.2rem; }
-  .about-text p strong { color: var(--purple); }
-  .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .about-card { background: var(--bg); border: 1.5px solid rgba(62,15,77,0.1); border-left: 3px solid var(--teal); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease; }
-  .about-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(62,15,77,0.08); }
-  .about-card-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 0.3rem; }
-  .about-card-label { font-size: 0.75rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+/* experience card with hover pop */
+.exp{position:relative;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:14px;padding:24px 26px;margin-top:30px;cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s}
+.exp:hover,.exp:focus-within{transform:scale(1.03);border-color:var(--pink);box-shadow:0 14px 40px rgba(255,45,149,.2);z-index:2}
+.exp h3{font-size:1.2rem}
+.exp .meta{color:var(--blue-soft);font-size:.93rem;margin:4px 0 8px}
+.exp .hint{color:var(--muted);font-size:.88rem}
+.exp .more{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s,opacity .4s,margin .3s}
+.exp:hover .more,.exp:focus-within .more{max-height:420px;opacity:1;margin-top:16px}
+.exp .badge{display:inline-block;background:var(--pink);color:#fff;font-size:.82rem;padding:3px 12px;border-radius:999px;margin-bottom:10px}
+.exp ul{padding-left:20px;color:#d6d6d6}
+.exp li{margin-bottom:6px}
 
-  .education { background: var(--bg); }
-  .edu-card { background: var(--white); border-radius: 10px; padding: 2rem 2.5rem; border: 1.5px solid rgba(62,15,77,0.08); display: flex; align-items: center; gap: 2rem; max-width: 700px; transition: all 0.3s ease; }
-  .edu-card:hover { box-shadow: 0 12px 32px rgba(62,15,77,0.08); transform: translateY(-4px); }
-  .edu-icon { font-size: 2.5rem; flex-shrink: 0; }
-  .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--purple); margin-bottom: 0.3rem; }
-  .edu-college { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem; }
-  .edu-cgpa { display: inline-block; padding: 0.3rem 0.8rem; background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.3); border-radius: 20px; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--teal-dark); }
+/* skills */
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{padding:9px 18px;border:1px solid var(--blue);border-radius:999px;transition:.2s}
+.chip:hover{border-color:var(--pink);color:var(--pink)}
+.group+.group{margin-top:24px}
+.group h3{font-size:1rem;color:var(--muted);margin-bottom:12px;font-weight:600}
 
-  .projects { background: var(--white); }
-  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .project-card { background: var(--bg); border: 1.5px solid rgba(62,15,77,0.08); border-radius: 10px; padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden; text-decoration: none; display: block; color: inherit; }
-  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--teal), var(--purple)); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
-  .project-card:hover::before { transform: scaleX(1); }
-  .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(62,15,77,0.1); border-color: rgba(45,212,191,0.3); }
-  .project-emoji { font-size: 2rem; margin-bottom: 1rem; }
-  .project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700; color: var(--purple); margin-bottom: 0.6rem; }
-  .project-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .project-tag { padding: 0.3rem 0.75rem; background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.25); border-radius: 20px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--teal-dark); }
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:.25s}
+.card:hover{border-color:var(--pink);transform:translateY(-4px);box-shadow:0 10px 30px rgba(255,45,149,.15)}
+.card h3{color:var(--text);margin-bottom:8px}
+.card p{color:#bdbdbd;font-size:.96rem;margin-bottom:12px}
+.card .tech{color:var(--blue-soft);font-size:.86rem}
 
-  .skills { background: var(--bg); }
-  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .skill-group { background: var(--white); border-radius: 10px; padding: 1.8rem; border: 1.5px solid rgba(62,15,77,0.07); transition: all 0.3s ease; }
-  .skill-group:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(62,15,77,0.07); }
-  .skill-group-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--teal); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(62,15,77,0.08); }
-  .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .skill-pill { padding: 0.4rem 0.9rem; border: 1.5px solid rgba(62,15,77,0.12); border-radius: 20px; font-size: 0.8rem; color: var(--purple); transition: all 0.2s ease; font-weight: 500; }
-  .skill-pill:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
+/* certifications */
+.certs{list-style:none;display:grid;gap:12px}
+.certs li{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:14px 18px;transition:.2s}
+.certs li:hover{border-left-color:var(--pink)}
 
-  .contact { background: var(--purple); }
-  .contact .section-eyebrow { color: var(--teal); }
-  .contact .section-title { color: var(--white); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .contact-text p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2rem; }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-link { display: flex; align-items: center; gap: 1rem; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; padding: 1rem 1.2rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; transition: all 0.3s ease; background: rgba(255,255,255,0.05); }
-  .contact-link:hover { background: rgba(45,212,191,0.1); border-color: var(--teal); color: var(--teal); transform: translateX(6px); }
-  .contact-link-icon { width: 36px; height: 36px; background: rgba(45,212,191,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-  .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
-  .info-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.2rem 1.5rem; }
-  .info-box-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--teal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.3rem; }
-  .info-box-value { font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+/* contact */
+#contact{text-align:center}
+#contact h2::after{margin-inline:auto}
+#contact p{color:var(--muted);margin-bottom:24px}
+footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:.9rem}
 
-  footer { background: var(--purple); border-top: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; }
-  footer p { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.4); }
-  footer span { color: var(--teal); }
-
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
-
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .hero-content { padding: 5rem 1.5rem 2rem; max-width: 100%; }
-    .hero-overlay { background: linear-gradient(to bottom, rgba(255,250,205,0.97) 50%, rgba(255,250,205,0.5) 100%); }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .projects-grid, .skills-grid { grid-template-columns: 1fr; }
-    .about-cards { grid-template-columns: 1fr 1fr; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
-  }
+@media(max-width:760px){
+  #home .wrap,.about-grid{grid-template-columns:1fr}
+  .photo{order:-1}
+  .exp:hover{transform:scale(1.01)}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">HV<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="wrap">
+    <a href="#home" class="logo">HV<span>.</span></a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<section class="hero" id="home">
-  <div class="hero-photo"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-hello">Hello, I'm</p>
-    <h1 class="hero-name">
-      <span class="first">Hansika</span>
-      <span class="last">Varre.</span>
-    </h1>
-    <p class="hero-tagline">Building intelligent systems,<br>elegant frontends & real-world solutions.</p>
-    <p class="hero-college">B.Tech Computer Science · Ramachandra College of Engineering</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-teal">Get in Touch</a>
-      <a href="#projects" class="btn-outline">↓ View Projects</a>
-    </div>
-  </div>
-  <div class="hero-scroll"><div class="scroll-dot"></div></div>
-</section>
-
-<section class="about" id="about">
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p class="section-eyebrow">01 — About Me</p>
-      <h2 class="section-title">Crafting Code,<br><em style="font-style:italic">Building Ideas.</em></h2>
-      <p>I'm a <strong>B.Tech Computer Science student</strong> at Ramachandra College of Engineering, Eluru, with a passion for building real-world tech solutions.</p>
-      <p>From <strong>IoT systems</strong> to <strong>AI-powered platforms</strong> and <strong>web applications</strong>, I love working across the full stack — turning ideas into functional, impactful products.</p>
-      <p>I'm a <strong>National-level 24-hour Hackathon Winner</strong> actively seeking internship opportunities.</p>
-    </div>
-    <div class="about-cards reveal">
-      <div class="about-card"><div class="about-card-num">8.93</div><div class="about-card-label">CGPA</div></div>
-      <div class="about-card"><div class="about-card-num">4+</div><div class="about-card-label">Projects Built</div></div>
-      <div class="about-card"><div class="about-card-num">🏆</div><div class="about-card-label">Hackathon Winner</div></div>
-      <div class="about-card"><div class="about-card-num">4+</div><div class="about-card-label">Certifications</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="education" id="education">
-  <p class="section-eyebrow reveal">02 — Education</p>
-  <h2 class="section-title reveal">Academic Background.</h2>
-  <div class="edu-card reveal">
-    <div class="edu-icon">🎓</div>
+<!-- HOME -->
+<header id="home">
+  <div class="wrap">
     <div>
-      <div class="edu-degree">B.Tech Computer Science</div>
-      <div class="edu-college">Ramachandra College of Engineering, Eluru · 2022 – 2026</div>
-      <span class="edu-cgpa">CGPA: 8.93 / 10.0</span>
+      <h1>Hi, I’m <span>Hansika Varre</span></h1>
+      <p>Final-year Computer Science Engineering student and frontend developer. I build clean, responsive websites and love turning ideas into working products.</p>
+      <a class="btn" href="#projects">View projects</a>
+      <a class="btn ghost" href="#contact">Contact me</a>
+    </div>
+    <div class="photo">
+      <!-- Keep your own photo file name here -->
+      <img src="photo.jpg" alt="Hansika Varre" onerror="this.style.display='none'">
     </div>
   </div>
-</section>
+</header>
 
-<section class="projects" id="projects">
-  <p class="section-eyebrow reveal">03 — Projects</p>
-  <h2 class="section-title reveal">Things I've Built.</h2>
-  <div class="projects-grid">
-    <a href="https://github.com/hansikavarre/Triaging-Agent" target="_blank" class="project-card reveal">
-      <div class="project-emoji">🏥</div>
-      <h3 class="project-title">Triaging Agent</h3>
-      <p class="project-desc">A smart triaging system that prioritizes tasks based on urgency and importance, improving response time and decision-making efficiency.</p>
-      <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JavaScript</span></div>
-    </a>
-    <a href="https://github.com/hansikavarre/supply-chain-management" target="_blank" class="project-card reveal">
-      <div class="project-emoji">🔗</div>
-      <h3 class="project-title">Supply Chain Management</h3>
-      <p class="project-desc">A web-based system to track, manage and optimize the flow of goods and resources from supplier to customer with real-time monitoring.</p>
-      <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JavaScript</span></div>
-    </a>
-    <div class="project-card reveal">
-      <div class="project-emoji">⛑️</div>
-      <h3 class="project-title">IntelliGuard Helmet</h3>
-      <p class="project-desc">An IoT-powered smart helmet for worker safety monitoring with gas detection, temperature sensing, and real-time GPS tracking.</p>
-      <div class="project-tags"><span class="project-tag">ESP32</span><span class="project-tag">IoT</span><span class="project-tag">MQ Sensor</span><span class="project-tag">GPS</span><span class="project-tag">ThingsBoard</span></div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-emoji">🎓</div>
-      <h3 class="project-title">UNIVISION AI</h3>
-      <p class="project-desc">A self-healing university monitoring system with automated recovery, intelligent alerting, and real-time infrastructure health tracking.</p>
-      <div class="project-tags"><span class="project-tag">Kubernetes</span><span class="project-tag">LangChain</span><span class="project-tag">Prometheus</span><span class="project-tag">Twilio</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="skills" id="skills">
-  <p class="section-eyebrow reveal">04 — Skills</p>
-  <h2 class="section-title reveal">Tools of the Trade.</h2>
-  <div class="skills-grid">
-    <div class="skill-group reveal">
-      <div class="skill-group-title">// Languages</div>
-      <div class="skill-pills"><span class="skill-pill">Python</span><span class="skill-pill">Java</span><span class="skill-pill">JavaScript</span><span class="skill-pill">HTML5</span><span class="skill-pill">CSS3</span><span class="skill-pill">SQL</span></div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">// Frameworks & Tools</div>
-      <div class="skill-pills"><span class="skill-pill">Flask</span><span class="skill-pill">React</span><span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">VS Code</span><span class="skill-pill">Arduino</span></div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">// Domains</div>
-      <div class="skill-pills"><span class="skill-pill">Machine Learning</span><span class="skill-pill">NLP</span><span class="skill-pill">IoT</span><span class="skill-pill">Frontend Dev</span><span class="skill-pill">Cloud</span><span class="skill-pill">Data Science</span></div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">// Personal skills</div>
-      <div class="skill-pills"><span class="skill-pill">Teamwork</span><span class="skill-pill">Communication</span><span class="skill-pill">Time management</span><span class="skill-pill">Resilient</span><span class="skill-pill">Flexible</span><span class="skill-pill">Patience</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="contact-grid">
-    <div class="contact-text reveal">
-      <p class="section-eyebrow">05 — Contact</p>
-      <h2 class="section-title">Let's Work Together.</h2>
-      <p>I'm actively looking for internship opportunities and exciting projects. Whether you have a role, a collaboration idea, or just want to connect — my inbox is open!</p>
-      <div class="contact-links">
-        <a href="mailto:hansikavarre25@gmail.com" class="contact-link"><div class="contact-link-icon">📧</div>hansikavarre25@gmail.com</a>
-        <a href="https://github.com/hansikavarre" target="_blank" class="contact-link"><div class="contact-link-icon">💻</div>github.com/hansikavarre</a>
-        <a href="https://linkedin.com/in/hansika-varre-b64453324" target="_blank" class="contact-link"><div class="contact-link-icon">🔗</div>LinkedIn Profile</a>
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <div class="about-grid">
+      <div>
+        <p>I’m a B.Tech Computer Science Engineering student at Ramachandra College of Engineering, graduating in 2026. I enjoy frontend development, problem solving and learning new technologies.</p>
+        <!-- Add your own achievements here -->
+      </div>
+      <div class="stats">
+        <div class="stat"><b>9.06</b><span>CGPA</span></div>
+        <div class="stat"><b>2026</b><span>Graduating batch</span></div>
       </div>
     </div>
-    <div class="contact-info reveal">
-      <div class="info-box"><div class="info-box-label">Location</div><div class="info-box-value">Gudivada, Andhra Pradesh, India</div></div>
-      <div class="info-box"><div class="info-box-label">Education</div><div class="info-box-value">B.Tech Computer Science<br>Ramachandra College of Engineering</div></div>
-      <div class="info-box"><div class="info-box-label">Status</div><div class="info-box-value" style="color:var(--teal)">✦ Open to Internships</div></div>
-      <div class="info-box"><div class="info-box-label">CGPA</div><div class="info-box-value">8.93 / 10.0</div></div>
+
+    <!-- EXPERIENCE: hover or tap to see how I handled the work -->
+    <div class="exp" tabindex="0">
+      <h3>Frontend Developer at HDC MA</h3>
+      <div class="meta">Horizon Digital Core Management Associates · Startup · Hyderabad</div>
+      <div class="hint">Hover over this card to see my real-time experience</div>
+      <div class="more">
+        <span class="badge">Real-time startup experience</span>
+        <ul>
+          <li>Worked in a live startup team where features shipped to real users, not just practice projects.</li>
+          <li>Built and fixed responsive user interfaces while balancing my college studies.</li>
+          <li>Took feedback from the team, iterated quickly and met deadlines.</li>
+          <li>Learned to communicate clearly, debug under pressure and write code others can maintain.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>Designed & Built by <span>Hansika Varre</span></p>
-  <p>© 2026 — All rights reserved</p>
-</footer>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="group">
+      <h3>Languages</h3>
+      <div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div>
+    </div>
+    <div class="group">
+      <h3>Frameworks and tools</h3>
+      <div class="chips"><span class="chip">Git &amp; GitHub</span><!-- add yours --></div>
+    </div>
+    <div class="group">
+      <h3>Domains</h3>
+      <div class="chips"><span class="chip">Frontend development</span><span class="chip">Responsive design</span></div>
+    </div>
+  </div>
+</section>
 
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+<!-- PROJECTS: paste your own real projects here -->
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Your Project 1</h3>
+        <p>Short description of what it does and what you built.</p>
+        <div class="tech">Tech used</div>
+      </div>
+      <div class="card">
+        <h3>Your Project 2</h3>
+        <p>Short description of what it does and what you built.</p>
+        <div class="tech">Tech used</div>
+      </div>
+      <div class="card">
+        <h3>Your Project 3</h3>
+        <p>Short description of what it does and what you built.</p>
+        <div class="tech">Tech used</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS: names only, delete this whole section if you prefer -->
+<section id="certifications">
+  <div class="wrap">
+    <h2>Certifications</h2>
+    <ul class="certs">
+      <li>Certification name</li>
+      <li>Certification name</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Want to work together or just say hi? Reach out.</p>
+    <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="mailto:YOUR_EMAIL@example.com">Email</a>
+  </div>
+</section>
+
+<footer>© Hansika Varre · Built with HTML, CSS and JavaScript</footer>
+
 </body>
 </html>
